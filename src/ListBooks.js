@@ -1,31 +1,19 @@
-import React, {Component} from 'react'
+import React from 'react'
+import BooksGrid from './BooksGrid'
 
-class ListBooks extends Component {
+class ListBooks extends React.Component {
 
   render() {
-  console.log('Props', this.props)
-    return (
 
-      <div className="list-books">
+   const{books}=this.props;
+
+
+    console.log('Props', this.props)
+    return (<div className="list-books">
       <div className="list-books-title">
         <h1>My Book Library</h1>
       </div>
-
-      <ol className ="books-grid">
-        {this.props.books.map((book) =>(
-
-         <li  className="book" key={book.title}>
-           <div className='book-cover' style={{ width: 128, height: 174, backgroundImage: 'url("${bookCover}")' }}/>
-          <div className='book-details'>
-            <p>{book.title}</p>
-            <p>{book.subtitle}</p>
-</div>
-</li>
-
-
-        ))}
-
-             </ol>
+    <BooksGrid books={books} />
     </div>)
 
   }
