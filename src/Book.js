@@ -1,6 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Book extends React.Component {
+
+  static propTypes = {
+    book:PropTypes.object.isRequired,
+    books:PropTypes.array.isRequired,
+
+  }
+
 
   render() {
 
@@ -8,12 +16,12 @@ class Book extends React.Component {
 
     return (
 
-      <li key={book.title}>
+      <li className="book" key={book.title}>
 
         <div className='book-cover' style={{
             width: 128,
             height: 174,
-            backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+            backgroundImage: `url(${book.imageLinks.thumbnail})`
           }}/>
         <div className='book-details'>
           <p className="book-title">{book.title}</p>
