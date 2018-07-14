@@ -1,18 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Shelf from './Shelf'
 
 class Book extends React.Component {
 
   static propTypes = {
     book:PropTypes.object.isRequired,
-    books:PropTypes.array.isRequired,
+
 
   }
 
 
   render() {
 
-    const {book, books} = this.props;
+    const {book, books, changeShelf} = this.props;
 
     return (
 
@@ -23,19 +24,15 @@ class Book extends React.Component {
             height: 174,
             backgroundImage: `url(${book.imageLinks.thumbnail})`
           }}/>
+            <Shelf book={book}  books={books} changeShelf={changeShelf}/>
         <div className='book-details'>
           <p className="book-title">{book.title}</p>
           {/* <p>{book.subtitle}</p> */}
 
           <p className="book-authors">{book.authors}</p>
         </div>
-        <select>
-          <option value="move" disabled="disabled">Move to...</option>
-          <option value="currentlyReading">Currently Reading</option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
-          <option value="none">None</option>
-        </select>
+
+
 
       </li>
    )

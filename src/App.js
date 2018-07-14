@@ -18,6 +18,8 @@ class BooksApp extends React.Component {
 
   }
 
+
+
 componentDidMount(){
   this.showBooks()
 }
@@ -29,10 +31,20 @@ showBooks = () => {
 }
 
 
+
+changeShelf = (book, otherShelf) => {
+  console.log(book, otherShelf)
+  BooksAPI.update(book, otherShelf)
+  .then((result) => {
+    this.showBooks();
+  })
+}
+
+
   render() {
     return (
       <div className='app'>
-      <ListBooks books={this.state.books}/>
+      <ListBooks books={this.state.books} changeShelf={this.changeShelf}/>
       </div>
     )
   }
