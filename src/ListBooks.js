@@ -1,6 +1,7 @@
 import React from 'react'
 import BooksGrid from './BooksGrid'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 class ListBooks extends React.Component {
 
@@ -12,10 +13,10 @@ class ListBooks extends React.Component {
 
    const{books, changeShelf}=this.props;
 
-   let shelves = [
-      { title: "currently reading", type: "currentlyReading" },
-      { title: "want to read", type: "wantToRead" },
-      { title: "read", type: "read" }
+   const shelves = [
+      { title: "currently reading", value: "currentlyReading" },
+      { title: "want to read", value: "wantToRead" },
+      { title: "read", value: "read" }
    ]
 
 
@@ -29,17 +30,19 @@ class ListBooks extends React.Component {
            return(
              <div className='bookshelf' key={index}>
               <h2 className='bookshelf-title'>{shelf.title}</h2>
-               <div className="bookshelf-books"></div>
-                   <BooksGrid books={ books.filter((book)=>(book.shelf === shelf.type))} changeShelf={changeShelf}/>
+              <div className="bookshelf-books"></div>
+                <BooksGrid books={ books.filter((book)=>(book.shelf === shelf.value))} changeShelf={changeShelf}/>
              </div>
            )
           }
         )}
-
-
       </div>
+      <div className='open-search'>
+        <Link to='/search'>Search</Link>
+      </div>
+     </div>
 
-    </div>
+
    )
  }
 }

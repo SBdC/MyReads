@@ -2,12 +2,14 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
+import SearchBook from './SearchBook'
+import { Route } from 'react-router-dom'
 
 
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
 
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -21,11 +23,11 @@ class BooksApp extends React.Component {
 
 
 componentDidMount(){
-  this.showBooks()
+  this.gatherBooks()
 }
 
 
-showBooks = () => {
+gatherBooks = () => {
   BooksAPI.getAll()
   .then(books => this.setState({books:books}))
 }
@@ -36,7 +38,7 @@ changeShelf = (book, otherShelf) => {
   console.log(book, otherShelf)
   BooksAPI.update(book, otherShelf)
   .then((result) => {
-    this.showBooks();
+    this.gatherBooks();
   })
 }
 
@@ -44,9 +46,22 @@ changeShelf = (book, otherShelf) => {
   render() {
     return (
       <div className='app'>
-      <ListBooks books={this.state.books} changeShelf={this.changeShelf}/>
+
+      <Route exact path='/' render={() => (
+        <ListBooks
+          books={this.state.books}
+          changeShelf={this.changeShelf}/>
+      )}/>
+      <Route exact path='/Search' render={() => (
+        <SearchBook
+          books={this.state.books}
+          changeShelf={this.changeShelf}
+        />
+      )}/>
+
       </div>
     )
+
   }
 }
 

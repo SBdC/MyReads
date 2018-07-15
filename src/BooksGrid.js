@@ -7,7 +7,7 @@ class BooksGrid extends React.Component {
   static propTypes = {
 
     books:PropTypes.array.isRequired,
-
+    changeShelf: PropTypes.func.isRequired
   }
 
 
@@ -19,7 +19,10 @@ class BooksGrid extends React.Component {
 
     <ol className="books-grid">
       {books.map((book) => (
-        <Book key={book.title} book={book} changeShelf={changeShelf}/>
+        <Book
+          key={book.title}
+          book={book}
+          changeShelf={changeShelf}/>
       ))}
 
     </ol>

@@ -8,6 +8,7 @@ class Book extends React.Component {
     book:PropTypes.object.isRequired,
 
 
+
   }
 
 
@@ -17,23 +18,22 @@ class Book extends React.Component {
 
     return (
 
-      <li className="book" key={book.title}>
-
+      <li key={book.title}>
+      <div className="book" >
+        <div className="book-top" >
         <div className='book-cover' style={{
             width: 128,
             height: 174,
             backgroundImage: `url(${book.imageLinks.thumbnail})`
           }}/>
-            <Shelf book={book}  books={books} changeShelf={changeShelf}/>
-        <div className='book-details'>
+          <Shelf book={book}  books={books} changeShelf={changeShelf}/>
+        </div>
+          <div className='book-details'>
           <p className="book-title">{book.title}</p>
           {/* <p>{book.subtitle}</p> */}
-
           <p className="book-authors">{book.authors}</p>
         </div>
-
-
-
+      </div>
       </li>
    )
 
