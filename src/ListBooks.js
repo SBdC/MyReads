@@ -13,6 +13,7 @@ class ListBooks extends React.Component {
 
    const{books, changeShelf}=this.props;
 
+
    const shelves = [
       { title: "currently reading", value: "currentlyReading" },
       { title: "want to read", value: "wantToRead" },
@@ -26,9 +27,9 @@ class ListBooks extends React.Component {
         <h1>My Book Library</h1>
       </div>
       <div className="list-books-content" >
-         {shelves.map((shelf, index) =>{
+         {shelves.map((shelf) =>{
            return(
-             <div className='bookshelf' key={index}>
+             <div className='bookshelf' key={shelf.value}>
               <h2 className='bookshelf-title'>{shelf.title}</h2>
               <div className="bookshelf-books"></div>
                 <BooksGrid books={ books.filter((book)=>(book.shelf === shelf.value))} changeShelf={changeShelf}/>

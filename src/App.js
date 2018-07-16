@@ -44,17 +44,20 @@ changeShelf = (book, otherShelf) => {
 
 
   render() {
+
+   const {books} = this.state
+
     return (
       <div className='app'>
 
       <Route exact path='/' render={() => (
         <ListBooks
-          books={this.state.books}
+          books={books}
           changeShelf={this.changeShelf}/>
       )}/>
-      <Route exact path='/Search' render={() => (
+      <Route exact path='/Search' render={(history) => (
         <SearchBook
-          books={this.state.books}
+          books={books}
           changeShelf={this.changeShelf}
         />
       )}/>
