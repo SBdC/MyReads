@@ -24,7 +24,7 @@ class SearchBook extends React.Component {
   }
 
   updateQuery = (query) => {
-    this.setState({query: query.trim()})
+    this.setState({query})
     if (query) {
       BooksAPI.search(query).then((searchResults) => {
         if (searchResults instanceof Array) {
@@ -58,14 +58,14 @@ class SearchBook extends React.Component {
               <div className="search-books-input-wrapper">
 
                 <input type="text"
-                       placeholder="Search by title or author"
+                       placeholder="Search Books"
                        value={query}
                        onChange={(event) => this.updateQuery(event.target.value)}/>
               </div>
             </form>
 
 
-    { query.length >1 && searchResults.length === 0 ? (
+    { query.length >3 && searchResults.length === 0 ? (
 
             <div className="search-books-results">
               <p>No books found! </p>

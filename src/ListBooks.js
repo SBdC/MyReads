@@ -51,8 +51,7 @@ class ListBooks extends React.Component {
         <Link to='/search'>Search</Link>
       </div>
      </div>
-
-
+     
    )
  }
 }
