@@ -31,7 +31,7 @@ class ListBooks extends React.Component {
 
       <div className='list-books'>
       <div className='list-books-title'>
-      <FontAwesomeIcon  className='book-icon' icon='book' />  <h1>My Book Library</h1> <FontAwesomeIcon  className='book-icon' icon='book-open' />
+      <FontAwesomeIcon  className='book-icon' icon='book' />  <h1>My Book Collection</h1> <FontAwesomeIcon  className='book-icon' icon='book-open' />
       </div>
       <div className='list-books-content' >
          {shelves.map((shelf) =>{
