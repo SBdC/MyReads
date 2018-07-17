@@ -18,6 +18,7 @@ class BooksGrid extends React.Component {
     return (
 
     <ol className="books-grid">
+
       {books.map((book) => (
         <Book
           key={book.title}
@@ -28,7 +29,6 @@ class BooksGrid extends React.Component {
     </ol>
 
    )
-
   }
 
 }
