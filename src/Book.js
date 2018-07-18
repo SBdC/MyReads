@@ -15,6 +15,7 @@ class Book extends React.Component {
 
     const {book, books, changeShelf} = this.props;
 
+
     return (
 
       <li key={book.title}>

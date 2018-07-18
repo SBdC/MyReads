@@ -23,13 +23,15 @@ componentDidMount(){
 
 gatherBooks = () => {
   BooksAPI.getAll()
-  .then(books => this.setState({books:books}))
+  .then(books => {
+    this.setState({ books })
+  })
 }
 
 
 
 changeShelf = (book, otherShelf) => {
-  // console.log(book, otherShelf)
+ console.log(book, otherShelf)
   BooksAPI.update(book, otherShelf)
   .then((result) => {
     this.gatherBooks();

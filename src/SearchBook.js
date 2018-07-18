@@ -20,17 +20,23 @@ class SearchBook extends React.Component {
 
   state = {
     query: '',
-    searchResults: []
+    searchResults: [],
+
   }
 
   updateQuery = (query) => {
-    this.setState({query})
+    this.setState({query, searchResults: []})
     if (query) {
       BooksAPI.search(query).then((searchResults) => {
         if (searchResults instanceof Array) {
           this.setState({
-            searchResults
+            searchResults: searchResults.map((book) => {
+              let libraryBook = this.props.books.find((b) => (b.id === book.id));
+              book.shelf = libraryBook ? libraryBook.shelf : 'none';
+              return book;
+             })
           })
+          
         } else {
           this.setState({
             searchResults: []
@@ -42,23 +48,21 @@ class SearchBook extends React.Component {
   }
 
 
-
   render() {
 
     const { query, searchResults } = this.state
-    const { changeShelf } = this.props
+    const { changeShelf} = this.props
 
     return (
       <div>
           <div className="search-books">
             <form className="search-books-bar">
-              {/* {JSON.stringify(this.state)} */}
+               {/* {JSON.stringify(this.state)} */}
               <Link className="close-search" to="/">Close</Link>
-
               <div className="search-books-input-wrapper">
 
                 <input type="text"
-                       placeholder="Search Books"
+                       placeholder="Search Book"
                        value={query}
                        onChange={(event) => this.updateQuery(event.target.value)}/>
               </div>
@@ -83,7 +87,8 @@ class SearchBook extends React.Component {
           <Book
             key={book.id}
             book={book}
-            changeShelf={changeShelf}/>
+            changeShelf={changeShelf}
+            />
         ))}
 
       </ol>

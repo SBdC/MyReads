@@ -11,9 +11,12 @@ library.add(faBook, faBookOpen)
 
 class ListBooks extends React.Component {
 
+
   static propTypes ={
     books:PropTypes.array.isRequired,
   }
+
+
 
   render() {
 
@@ -21,7 +24,7 @@ class ListBooks extends React.Component {
 
 
    const shelves = [
-      { title: 'currently reading', value: 'currentlyReading', class: 'shelf-currentlyReading' },
+      { title: 'currently reading', value: 'currentlyReading', class: 'shelf-currentlyReading'},
       { title: 'want to read', value: 'wantToRead', class: 'shelf-wantToRead' },
       { title: 'read', value: 'read', class: 'shelf-read' }
    ]
@@ -39,7 +42,7 @@ class ListBooks extends React.Component {
              <div className= {shelf.class} key={shelf.value}>
               <h2 className='bookshelf-title'>{shelf.title} </h2>
               <div className='bookshelf-books'></div>
-                <BooksGrid books={ books.filter((book)=>(book.shelf === shelf.value))} changeShelf={changeShelf}/>
+                <BooksGrid  books={ books.filter((book)=>(book.shelf === shelf.value))} changeShelf={changeShelf}/>
              </div>
 
            )
@@ -51,7 +54,7 @@ class ListBooks extends React.Component {
         <Link to='/search'>Search</Link>
       </div>
      </div>
-     
+
    )
  }
 }
