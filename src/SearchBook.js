@@ -1,12 +1,12 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
-import Book from './Book'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFrown } from '@fortawesome/free-solid-svg-icons'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+import * as BooksAPI from './BooksAPI'
+import PropTypes from 'prop-types'
+import Book from './Book'
 
 library.add(faFrown, faBookOpen)
 
@@ -36,7 +36,7 @@ class SearchBook extends React.Component {
               return book;
              })
           })
-          
+
         } else {
           this.setState({
             searchResults: []
